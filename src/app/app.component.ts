@@ -63,16 +63,20 @@ export class AppComponent implements OnInit {
 
         for (const risk of risks) {
           const level: string = risk.risk_level;
+          const name: string = risk.name;
+          const orgId = risk.organization_id;
 
-          if (level === 'ON_TRACK') {
-            this.numYellow++;
-            console.log(risk.name + '=>' + level);
-          } else if (level === 'MEDIUM_RISK') {
-            console.log(risk.name + '=>' + level);
-            this.numOrange++;
-          } else if (level === 'HIGH_RISK') {
-            console.log(risk.name + '=>' + level);
-            this.numRed++;
+          if (name.startsWith('easyboard')) {
+            if (level === 'ON_TRACK') {
+              this.numYellow++;
+              console.log(risk.name + '=>' + level);
+            } else if (level === 'MEDIUM_RISK') {
+              console.log(risk.name + '=>' + level);
+              this.numOrange++;
+            } else if (level === 'HIGH_RISK') {
+              console.log(risk.name + '=>' + level);
+              this.numRed++;
+            }
           }
         }
         this.ref.detectChanges();
