@@ -1,15 +1,15 @@
 
 <div class="jumbotron">
 
-  <div class="text-center">
+  <!--<div class="text-center">
     <h1>Easyboard!!</h1>
-  </div>
+  </div>-->
 
   <div class="card-columns" style="widht:95%;margin-top:1%;margin-left:1%;">
     <app-remaining></app-remaining>
     <!--<app-meeting></app-meeting>-->
     <app-blockers [blockers]="blockers"></app-blockers>
-    <app-risks></app-risks>
+    <app-risks [numYellow]="numYellow" [numOrange]="numOrange" [numRed]="numRed"></app-risks>
   </div>
 </div>
 

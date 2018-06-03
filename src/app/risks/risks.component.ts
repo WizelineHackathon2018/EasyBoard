@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-risks',
@@ -7,16 +7,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RisksComponent implements OnInit {
 
-  numYellow: number;
-  numOrange: number;
-  numRed: number;
+  @Input() numYellow: number;
+  @Input() numOrange: number;
+  @Input() numRed: number;
 
   constructor() { }
 
   ngOnInit() {
-    this.numYellow = 5;
-    this.numOrange = 10;
-    this.numRed = 2;
+    this.numYellow = 0;
+    this.numOrange = 0;
+    this.numRed = 0;
 
   }
 

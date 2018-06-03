@@ -12,6 +12,13 @@ const httpOptions = {
   })
 };
 
+const httpOptionsWizeline  = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJXUUx6bTNvc1FqRzJoRUdDczBFM0RBIiwicm5kIjoiNGNjMjllNWU3M2FkOGVhZGUzMGMwMTY4MWQ1MjcwYTc3NWE4ZGE3MmNlY2ZkOWU5ZTlhM2JmYjUyYTExYzU1ZTUzN2VmM2U2ZjI2OGM2ZDdiMzVjZGFhY2VmMjFkZDExODRmNjIwNzllNmY2ZmNlNzhjZmYzOTk2Nzg3NzcyMTgiLCJhdWQiOiJjbGllbnQiLCJpYXQiOjE1Mjc5NjIxNTcsIm9pYXQiOjE1Mjc5NjIxNTd9.jqtHBRPsc4lUR8leCOyh82D9_HkPEa9MKfC4InJevao'
+  })
+};
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -24,6 +31,9 @@ export class AppComponent implements OnInit {
   context: any;
   manager: any;
   messageBus: any;
+  numYellow = 0;
+  numOrange = 0;
+  numRed = 0;
   blockers: Blocker[] = [];
 
   constructor(private ref: ChangeDetectorRef, private http: HttpClient) {}
@@ -31,17 +41,46 @@ export class AppComponent implements OnInit {
     this.debug = 'init ';
 
     try {
+      this.getBlockersFromGitHub();
+      this.getRisks();
+
       this.context = cast.framework.CastReceiverContext.getInstance();
       const CUSTOM_CHANNEL = 'urn:x-cast:com.easyboard.namespace';
       this.context.addCustomMessageListener(CUSTOM_CHANNEL, (customEvent) => this.handleMessage(customEvent));
       this.context.start();
-      this.getBlockersFromGitHub();
 
     } catch (e) {
 
     }
 
     this.debug += this.context;
+  }
+
+  getRisks() {
+    this.http.get('https://whw2t.wizelineroadmap.com/api/v1/units', httpOptionsWizeline).subscribe(
+      response => {
+        const risks: any[] = response['values'];
+
+        for (const risk of risks) {
+          const level: string = risk.risk_level;
+
+          if (level === 'ON_TRACK') {
+            this.numYellow++;
+            console.log(risk.name + '=>' + level);
+          } else if (level === 'MEDIUM_RISK') {
+            console.log(risk.name + '=>' + level);
+            this.numOrange++;
+          } else if (level === 'HIGH_RISK') {
+            console.log(risk.name + '=>' + level);
+            this.numRed++;
+          }
+        }
+        this.ref.detectChanges();
+      },
+      backEndError => {
+        this.message = JSON.stringify(backEndError);
+      }
+    );
   }
 
   getBlockersFromGitHub() {
