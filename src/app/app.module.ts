@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClientComponent } from './client/client.component';
+import { BlockersComponent } from './blockers/blockers.component';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     DashboardComponent,
-    ClientComponent
+    ClientComponent,
+    BlockersComponent
   ],
   imports: [
     BrowserModule,

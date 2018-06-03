@@ -1,1 +1,17 @@
-<router-outlet></router-outlet>
+
+<div class="jumbotron">
+
+  <div class="text-center">
+    <h1>Easyboard!!</h1>
+  </div>
+
+  <div class="container">
+    <div class="col-md-4">
+      <app-blockers [blockers]="blockers"></app-blockers>
+    </div>
+  </div>
+</div>
+<h3>DEBUG</h3>
+<button type="button" class="btn btn-primary" (click)="addTestBlocker()">Add test blocker</button>
+<h3>Waiting for messages</h3>
+<h4>received message: <span class="message">{{message}}</span></h4>

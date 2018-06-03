@@ -1,0 +1,13 @@
+<div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+  <div class="card-header">Blockers</div>
+  <div class="card-body">
+    <div class="row" *ngFor="let blocker of blockers">
+      <div class="col-md-6">
+        <p class="card-text">{{blocker.name}}</p>
+      </div>
+      <div class="col-md-6">
+        <p class="card-text">{{blocker.raisedBy.firstName}} {{blocker.raisedBy.lastName}}</p>
+      </div>
+    </div>
+  </div>
+</div>
