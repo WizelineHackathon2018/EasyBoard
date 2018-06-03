@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 // create a new express server
 var app = express();
 
-MongoClient.connect('mongodb://localhost:27017',(err,database) =>{
+MongoClient.connect('mongodb://ezboard:3azyB0arD@cluster0-shard-00-00-onaim.mongodb.net:27017,cluster0-shard-00-01-onaim.mongodb.net:27017,cluster0-shard-00-02-onaim.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true',(err,database) =>{
 
   if (err) return console.log(err)
 
