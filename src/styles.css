@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+.button {
+  margin: 4px 2px;
+  cursor: pointer;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  color: black;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.yellow-risk {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  background: yellow;
+}
+
+.orange-risk {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  background-color: orange;
+}
+
+.red-risk {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  background-color: red;
+}
+
+.icon-right {
+  margin-left: 15px;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+}
+
+.height-60px{
+  height:60px;
+}

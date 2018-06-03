@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClientComponent } from './client/client.component';
 import { BlockersComponent } from './blockers/blockers.component';
+import { RemainingComponent } from './remaining/remaining.component';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -20,7 +21,8 @@ const appRoutes: Routes = [
     AppComponent,
     DashboardComponent,
     ClientComponent,
-    BlockersComponent
+    BlockersComponent,
+    RemainingComponent
   ],
   imports: [
     BrowserModule,

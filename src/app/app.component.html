@@ -5,11 +5,13 @@
     <h1>Easyboard!!</h1>
   </div>
 
-  <div class="container">
-    <div class="col-md-4">
-      <app-blockers [blockers]="blockers"></app-blockers>
-    </div>
+  <div class="card-columns" style="widht:95%;margin-top:1%;margin-left:1%;">
+    <app-remaining></app-remaining>
+    <!--<app-meeting></app-meeting>-->
+    <app-blockers [blockers]="blockers"></app-blockers>
+    <!--<app-risks></app-risks>-->
   </div>
+
 
   <h3>DEBUG</h3>
   <button type="button" class="btn btn-primary" (click)="addTestBlocker()">Add test blocker</button>
