@@ -1,9 +1,16 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Blocker } from './blockers/blocker.model';
 import { Message } from './common/message.model';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 declare var cast: any;
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json',
+    'Authorization': 'Basic ' + btoa('Chano12:ef6765f6e375c5b80b2af713b808956eeccaab7b')
+  })
+};
 
 @Component({
   selector: 'app-root',
@@ -70,9 +77,31 @@ export class AppComponent implements OnInit {
 
   private addBlockerToDB(blocker: Blocker) {
     this.blockers.push(blocker);
+
+    const gitHubPayload = {
+      'title': blocker.name,
+      'body': '',
+      'assignees': [
+        'Chano12'
+      ],
+      'milestone': 1,
+      'state': 'open',
+      'labels': [
+        'Blockers'
+      ]
+    };
+
+    this.http.post('https://api.github.com/repos/Chano12/EasyBoard/issues', gitHubPayload, httpOptions).subscribe(
+      response => {
+        this.message = JSON.stringify(response);
+      },
+      backEndError => {
+        this.message = JSON.stringify(backEndError);
+      }
+    );
   }
 
   addTestBlocker() {
-    // test
+    this.addBlockerToDB(new Blocker('test'));
   }
 }
