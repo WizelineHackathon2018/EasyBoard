@@ -76,7 +76,7 @@ export class AppComponent implements OnInit {
   }
 
   private addBlockerToDB(blocker: Blocker) {
-    this.blockers.push(blocker);
+    /*this.blockers.push(blocker);
 
     const gitHubPayload = {
       'title': blocker.name,
@@ -98,7 +98,7 @@ export class AppComponent implements OnInit {
       backEndError => {
         this.message = JSON.stringify(backEndError);
       }
-    );
+    );*/
   }
 
   addTestBlocker() {
