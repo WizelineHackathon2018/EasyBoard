@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { ClientComponent } from './client/client.component';
 import { BlockersComponent } from './blockers/blockers.component';
 import { RemainingComponent } from './remaining/remaining.component';
+import { RisksComponent } from './risks/risks.component';
 
 const appRoutes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
@@ -22,7 +23,8 @@ const appRoutes: Routes = [
     DashboardComponent,
     ClientComponent,
     BlockersComponent,
-    RemainingComponent
+    RemainingComponent,
+    RisksComponent,
   ],
   imports: [
     BrowserModule,
